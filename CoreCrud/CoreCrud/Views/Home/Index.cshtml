@@ -1,0 +1,34 @@
+﻿@model List<CoreCrud.Models.EmpModel>
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Home Page";
+    int sr = 1;
+}
+<h1>@HttpContextAccessor.HttpContext.Session.GetString("name")</h1>
+<table class="table table-bordered table-hover table-warning">
+    <tr>
+        <th>Id</th>
+        <th>Nmae</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@sr</td>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Mobile</td>
+            <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-success">Edit</a></td>
+            <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a></td>
+        </tr>
+        sr = sr + 1;
+    }
+</table>
+<a href="@Url.Action("AddEmp","Home")" class="btn btn-primary">Add-New</a>

@@ -1,0 +1,53 @@
+﻿@model CoreCrud.Models.StudentMod
+
+
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+
+
+<div class="row">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+            <div class="card-header bg-danger text-white">
+                <h2 class="text-uppercase text-center">LOGIN HERE</h2>
+            </div>
+            <div class="card-body">
+                <form asp-action="Login" asp-controller="Employee">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+
+                    <div class="form-group">
+                        <span style="color:red;">@TempData["Invalid"]</span>
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" type="email" class="form-control" required />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <span style="color:red;">@TempData["Wrong"]</span>
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" type="password" class="form-control" required />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+
+                    <input type="submit" value="Submit" class="btn btn-sm btn-success text-uppercase rounded-0" />
+                    <span><a asp-action="UserReg" asp-controller="Employee">Create a Account</a></span>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>

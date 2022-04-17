@@ -1,0 +1,31 @@
+﻿@model CoreCrud.Models.EmpModel
+
+
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+
+<p>This is Session</p>
+<p>@HttpContextAccessor.HttpContext.Session.GetString("name")</p>
+
+
+<form asp-controller="Home" asp-action="AddEmp" method="post">
+    @*@Html.HiddenFor(a=>a.Id)*@
+    <input type="hidden" asp-for="Id" />
+    <h4>Add Employee</h4>
+    <div class="form-group">
+        <label>Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input asp-for="Email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Mobile</label>
+        <input asp-for="Mobile" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success"> Submit</button>
+</form>
